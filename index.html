@@ -8,17 +8,68 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
   
   <title>Frontend Mentor | Todo app</title>
 
 </head>
   <body>
-
-    changed
+    <div class="img-container">
+      <picture class="bg-img">
+        <source media="(max-width: 500px)" srcset="./images/bg-mobile-light.jpg">
+        <img class="header-img" src="./images/bg-desktop-light.jpg" alt="">
+      </picture>
+    </div>
+    <div class="container">
+      <div class="todo-app">
+        <h1>TODO</h1>
+        <div class="theme-btn">
+          <img src="./images/icon-moon.svg" alt="">
+        </div>
+      </div>
+      <div class="todos-container">
+        <form class="todo-form">
+          <div class="todo-item">
+            <label for="add-todo">
+              <div class="checkbox"></div>
+            </label>
+            <input type="text" name="add-todo" placeholder="Create a new todo...">
+          </div>
+        </form>
+        <ul class="todos">
+          <li class="todo todo-item">
+            <div class="todo-text">
+              <div class="checkbox">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg>
+              </div>
+              <p>Checked todo</p>
+            </div>
+            <div class="delete-btn">
+              <img src="./images/icon-cross.svg" alt="">
+            </div>
+          </li>      
+          <li class="todo todo-item todo-filter">
+            <div class="counter">5 items left</div>
+            <ul class="desktop-filter">
+              <li>All</li>
+              <li>Active</li>
+              <li>Completed</li>
+            </ul>
+            <div class="clear-completed">Clear Completed</div>
+          </li>
+        </ul>
+        <ul class="todo todo-item mobile-filter">
+          <li>All</li>
+          <li>Active</li>
+          <li>Completed</li>
+        </ul>
+      </div> 
+      <p class="drag-reorder">Drag and drop to reorder list</p>
+    </div>
+    
+    <!-- changed
 
     Todo
-
-    <!-- Add dynamic number --> items left
 
     All
     Active 
@@ -31,6 +82,6 @@
     <div class="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
       Coded by <a href="#">Your Name Here</a>.
-    </div>
+    </div> -->
   </body>
 </html>

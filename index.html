@@ -1,73 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
-  
+
   <title>Frontend Mentor | Todo app</title>
 
 </head>
-  <body>
-    <div class="img-container">
-      <picture class="bg-img">
-        <source media="(max-width: 500px)" srcset="./images/bg-mobile-light.jpg">
-        <img class="header-img" src="./images/bg-desktop-light.jpg" alt="">
-      </picture>
-    </div>
-    <div class="container">
-      <div class="todo-app">
-        <h1>TODO</h1>
-        <div class="theme-btn">
-          <img src="./images/icon-moon.svg" alt="">
-        </div>
+
+<body>
+  <div class="img-container">
+    <picture class="bg-img">
+      <source media="(max-width: 750px)" srcset="./images/bg-mobile-light.jpg">
+      <img class="header-img" src="./images/bg-desktop-light.jpg" alt="">
+    </picture>
+  </div>
+  <div class="container">
+    <div class="todo-app">
+      <h1>TODO</h1>
+      <div class="theme-btn">
+        <img src="./images/icon-moon.svg" alt="">
       </div>
-      <div class="todos-container">
-        <form class="todo-form">
-          <div class="todo-item">
-            <label for="add-todo">
-              <div class="checkbox"></div>
-            </label>
-            <input type="text" name="add-todo" placeholder="Create a new todo...">
-          </div>
-        </form>
-        <ul class="todos">
-          <li class="todo todo-item">
-            <div class="todo-text">
-              <div class="checkbox">
-                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg>
-              </div>
-              <p>Checked todo</p>
-            </div>
-            <div class="delete-btn">
-              <img src="./images/icon-cross.svg" alt="">
-            </div>
-          </li>      
-          <li class="todo todo-item todo-filter">
-            <div class="counter">5 items left</div>
-            <ul class="desktop-filter">
-              <li>All</li>
-              <li>Active</li>
-              <li>Completed</li>
-            </ul>
-            <div class="clear-completed">Clear Completed</div>
-          </li>
-        </ul>
-        <ul class="todo todo-item mobile-filter">
+    </div>
+    <div class="todos-container">
+      <form class="todo-form">
+        <div class="todo-item">
+          <label for="add-todo">
+            <div class="checkbox-disabled"></div>
+          </label>
+          <input type="text" name="add-todo" placeholder="Create a new todo...">
+        </div>
+      </form>
+      <ul class="todos">
+        <!-- Todo item added dynamically -->
+      </ul>
+      <div class="todo todo-item todo-filter">
+        <div class="counter">
+          <span></span> items left
+        </div>
+        <ul class="desktop-filter">
           <li>All</li>
           <li>Active</li>
           <li>Completed</li>
         </ul>
-      </div> 
-      <p class="drag-reorder">Drag and drop to reorder list</p>
+        <div class="clear-completed">Clear Completed</div>
+      </div>
+      <ul class="todo todo-item mobile-filter">
+        <li><a class="active" href="#">All</a></li>
+        <li><a href="#">Active</a></li>
+        <li><a href="#">Completed</a></li>
+      </ul>
     </div>
-    
-    <!-- changed
+    <p class="drag-reorder">Drag and drop to reorder list</p>
+  </div>
+
+  <!-- changed
 
     Todo
 
@@ -83,5 +78,8 @@
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
       Coded by <a href="#">Your Name Here</a>.
     </div> -->
-  </body>
+
+  <script src="./script/app.js"></script>
+</body>
+
 </html>

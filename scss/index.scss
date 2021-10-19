@@ -1,0 +1,342 @@
+// Variables
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    // root colors
+    --active-filter: hsl(220, 98%, 61%);
+    --app-bg: hsl(0, 0%, 95%);
+    --todo-item: hsl(0, 0%, 100%);
+    --checked-todo: hsl(233, 11%, 84%);
+    --filter-text: hsl(236, 9%, 61%);
+    --todo-text: hsl(235, 19%, 35%);
+    --box-shadow: hsla(237, 20%, 80%, 0.502);
+    --checked-bg: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
+    
+}
+
+.darkmode {
+    // Dark theme colors
+    --app-bg: hsl(235, 21%, 11%);
+    --todo-item: hsl(235, 24%, 19%);
+    --checked-todo: hsl(234, 11%, 52%);
+    --filter-text: hsl(235, 16%, 43%);
+    --todo-text: hsl(234, 39%, 85%);
+    --box-shadow: hsla(0, 0%, 0%, 0.5);
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--app-bg);
+}
+
+a {
+    text-decoration: none;
+    color: var(--filter-text);
+}
+
+a:hover {
+    color: var(--todo-text);
+}
+
+ul {
+    list-style: none;
+}
+
+.img-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    z-index: -99;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left;
+    }
+}
+
+.container {
+    width: 325px;
+    margin-top: 2.66em;
+
+    .todo-app {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        
+        h1 {
+            font-size: 24px;
+            line-height: 36px;
+            letter-spacing: 12px;
+            color: hsl(0, 0%, 100%);
+        }
+
+        .theme-btn {
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .theme-btn img {
+            width: 20px;
+            height: 20px;
+        }
+
+    }
+
+    .todos-container {
+        width: 100%;
+        
+        .todo-form {
+            .todo-item {
+                border-radius: 5px;
+            }
+        }
+
+        .todo-item {
+            display: flex;
+            padding: 14px 20px;
+            background-color:var(--todo-item);
+            color: var(--todo-text);
+
+            input {
+                font-family: 'Josefin Sans', sans-serif;
+                font-size: 12px;
+                color: var(--todo-text);
+                background-color:var(--todo-item);
+                width: 100%;
+                padding-left: 1.3em;
+                border: none;
+                outline: none;
+            }
+        }
+
+        .checkbox, .checkbox-disabled {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var( --todo-text);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .todos {      
+            margin-top: 16px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+
+            .todo {
+                justify-content: space-between;
+                align-items: center;
+                padding: 16px 20px;
+                margin-bottom: 1px;
+                transition: all 500ms ease;
+    
+                .todo-text {
+                    display: flex;
+                    align-items: center;
+    
+                    p {
+                        font-size: 12px;
+                        line-height: 12px;
+                        padding: 0 12px;
+                    }
+
+                    .checkbox svg {
+                        transform: scale(.9);
+                        pointer-events: none;
+                        visibility: hidden;
+                    }
+    
+                    .checkbox:hover::before {
+                        content: '';
+                        position: absolute;
+                        width: 18px;
+                        height: 18px;
+                        border-radius: 50%;
+                        background: var(--todo-item);
+                    }
+                    
+                    .checkbox:hover {
+                        background: var(--checked-bg);
+                        border: none;
+                    }
+                }
+              
+                .delete-btn {
+                    width: 12px;
+                    height: 12px;
+                    display: block;
+                } 
+            }
+
+            .remove {
+                transform: translateY(8rem) rotateZ(20deg);
+                opacity: 0; 
+            }
+        }
+        
+        .checked .checkbox {
+            background: var(--checked-bg);
+            border: none;
+        }
+        
+        .checked p {
+            color: var(--checked-todo);
+            text-decoration: line-through;    
+        }
+
+        .todo-filter {
+            justify-content: space-between;
+            padding: 16px 20px 20px;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .desktop-filter {
+            display: none;
+        }
+
+        .todo-item {
+            font-size: 12px;
+        }
+    
+        .checkbox, .delete-btn, .theme-btn, .clear-completed, .mobile-filter li {
+            cursor: pointer;
+        }
+    
+        .counter, .clear-completed {
+            color: var(--filter-text);
+        }
+
+        .mobile-filter {
+            justify-content: space-between;
+            margin-top: 16px;
+            padding: 15px 80px;
+            border-radius: 5px;
+        }
+        
+        .mobile-filter li {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--filter-text);  
+        }
+
+        .mobile-filter li .active {
+            color: var(--active-filter);
+        }
+    }
+    
+    .todo {
+        box-shadow: 0px 35px 50px -15px var(--box-shadow);
+    }
+
+    .drag-reorder {
+        font-size: 14px;
+        color: var(--filter-text);
+        text-align: center;
+        padding-top: 42px;
+    }
+
+    .checked .checkbox svg {
+        // border: 2px solid red;
+        visibility: visible !important;
+    }
+    
+    .desktop-filter .active {
+        color: var(--active-filter);
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .container {
+        width: 540px;
+
+        .todo-app {
+            h1 {
+                font-size: 34px;
+            }
+
+            .theme-btn img {
+                width: 26px;
+                height: 26px;
+            }
+        }
+
+        .todos-container {
+            .todo-item {
+                padding: 20px 24px;
+                
+                input {
+                    font-size: 18px;
+                }
+            }
+
+            .checkbox, .checkbox-disabled {
+                width: 24px;
+                height: 24px;
+            }
+    
+            .todos {
+                .todo {
+                    padding: 20px 24px;
+                    cursor: pointer;
+                    .todo-text {
+                        p {
+                            font-size: 18px;
+                            line-height: 18px;
+                        }
+
+                        .checkbox svg {
+                            transform: scale(1);
+                        }
+                        .checkbox:hover::before {
+                            width: 20px;
+                            height: 20px;
+                        } 
+                    }
+
+                    .delete-btn {
+                        width: 18px;
+                        height: 18px;
+                        display: none;
+                    }
+                }
+
+                .todo:hover .delete-btn {
+                    display: block;
+                }
+            }
+
+            .todo-item {
+                font-size: 14px;
+            }
+
+            .desktop-filter {
+                display: flex;
+                font-weight: 700;
+                margin-left: 32px;
+
+                li + li {
+                    padding-left: 18px;
+                }
+            }
+
+            .mobile-filter {
+                display: none;
+            }
+        }
+    }
+}

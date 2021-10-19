@@ -1,0 +1,280 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --active-filter: hsl(220, 98%, 61%);
+  --app-bg: hsl(0, 0%, 95%);
+  --todo-item: hsl(0, 0%, 100%);
+  --checked-todo: hsl(233, 11%, 84%);
+  --filter-text: hsl(236, 9%, 61%);
+  --todo-text: hsl(235, 19%, 35%);
+  --box-shadow: hsla(237, 20%, 80%, 0.502);
+  --checked-bg: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%);
+}
+
+.darkmode {
+  --app-bg: hsl(235, 21%, 11%);
+  --todo-item: hsl(235, 24%, 19%);
+  --checked-todo: hsl(234, 11%, 52%);
+  --filter-text: hsl(235, 16%, 43%);
+  --todo-text: hsl(234, 39%, 85%);
+  --box-shadow: hsla(0, 0%, 0%, 0.5);
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  background-color: var(--app-bg);
+}
+
+a {
+  text-decoration: none;
+  color: var(--filter-text);
+}
+
+a:hover {
+  color: var(--todo-text);
+}
+
+ul {
+  list-style: none;
+}
+
+.img-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  z-index: -99;
+}
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
+}
+
+.container {
+  width: 325px;
+  margin-top: 2.66em;
+}
+.container .todo-app {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.container .todo-app h1 {
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 12px;
+  color: white;
+}
+.container .todo-app .theme-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.container .todo-app .theme-btn img {
+  width: 20px;
+  height: 20px;
+}
+.container .todos-container {
+  width: 100%;
+}
+.container .todos-container .todo-form .todo-item {
+  border-radius: 5px;
+}
+.container .todos-container .todo-item {
+  display: flex;
+  padding: 14px 20px;
+  background-color: var(--todo-item);
+  color: var(--todo-text);
+}
+.container .todos-container .todo-item input {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 12px;
+  color: var(--todo-text);
+  background-color: var(--todo-item);
+  width: 100%;
+  padding-left: 1.3em;
+  border: none;
+  outline: none;
+}
+.container .todos-container .checkbox, .container .todos-container .checkbox-disabled {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--todo-text);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.container .todos-container .todos {
+  margin-top: 16px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+}
+.container .todos-container .todos .todo {
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  margin-bottom: 1px;
+  transition: all 500ms ease;
+}
+.container .todos-container .todos .todo .todo-text {
+  display: flex;
+  align-items: center;
+}
+.container .todos-container .todos .todo .todo-text p {
+  font-size: 12px;
+  line-height: 12px;
+  padding: 0 12px;
+}
+.container .todos-container .todos .todo .todo-text .checkbox svg {
+  transform: scale(0.9);
+  pointer-events: none;
+  visibility: hidden;
+}
+.container .todos-container .todos .todo .todo-text .checkbox:hover::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--todo-item);
+}
+.container .todos-container .todos .todo .todo-text .checkbox:hover {
+  background: var(--checked-bg);
+  border: none;
+}
+.container .todos-container .todos .todo .delete-btn {
+  width: 12px;
+  height: 12px;
+  display: block;
+}
+.container .todos-container .todos .remove {
+  transform: translateY(8rem) rotateZ(20deg);
+  opacity: 0;
+}
+.container .todos-container .checked .checkbox {
+  background: var(--checked-bg);
+  border: none;
+}
+.container .todos-container .checked p {
+  color: var(--checked-todo);
+  text-decoration: line-through;
+}
+.container .todos-container .todo-filter {
+  justify-content: space-between;
+  padding: 16px 20px 20px;
+  border-radius: 0 0 5px 5px;
+}
+.container .todos-container .desktop-filter {
+  display: none;
+}
+.container .todos-container .todo-item {
+  font-size: 12px;
+}
+.container .todos-container .checkbox, .container .todos-container .delete-btn, .container .todos-container .theme-btn, .container .todos-container .clear-completed, .container .todos-container .mobile-filter li {
+  cursor: pointer;
+}
+.container .todos-container .counter, .container .todos-container .clear-completed {
+  color: var(--filter-text);
+}
+.container .todos-container .mobile-filter {
+  justify-content: space-between;
+  margin-top: 16px;
+  padding: 15px 80px;
+  border-radius: 5px;
+}
+.container .todos-container .mobile-filter li {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--filter-text);
+}
+.container .todos-container .mobile-filter li .active {
+  color: var(--active-filter);
+}
+.container .todo {
+  box-shadow: 0px 35px 50px -15px var(--box-shadow);
+}
+.container .drag-reorder {
+  font-size: 14px;
+  color: var(--filter-text);
+  text-align: center;
+  padding-top: 42px;
+}
+.container .checked .checkbox svg {
+  visibility: visible !important;
+}
+.container .desktop-filter .active {
+  color: var(--active-filter);
+}
+
+@media screen and (min-width: 750px) {
+  .container {
+    width: 540px;
+  }
+  .container .todo-app h1 {
+    font-size: 34px;
+  }
+  .container .todo-app .theme-btn img {
+    width: 26px;
+    height: 26px;
+  }
+  .container .todos-container .todo-item {
+    padding: 20px 24px;
+  }
+  .container .todos-container .todo-item input {
+    font-size: 18px;
+  }
+  .container .todos-container .checkbox, .container .todos-container .checkbox-disabled {
+    width: 24px;
+    height: 24px;
+  }
+  .container .todos-container .todos .todo {
+    padding: 20px 24px;
+    cursor: pointer;
+  }
+  .container .todos-container .todos .todo .todo-text p {
+    font-size: 18px;
+    line-height: 18px;
+  }
+  .container .todos-container .todos .todo .todo-text .checkbox svg {
+    transform: scale(1);
+  }
+  .container .todos-container .todos .todo .todo-text .checkbox:hover::before {
+    width: 20px;
+    height: 20px;
+  }
+  .container .todos-container .todos .todo .delete-btn {
+    width: 18px;
+    height: 18px;
+    display: none;
+  }
+  .container .todos-container .todos .todo:hover .delete-btn {
+    display: block;
+  }
+  .container .todos-container .todo-item {
+    font-size: 14px;
+  }
+  .container .todos-container .desktop-filter {
+    display: flex;
+    font-weight: 700;
+    margin-left: 32px;
+  }
+  .container .todos-container .desktop-filter li + li {
+    padding-left: 18px;
+  }
+  .container .todos-container .mobile-filter {
+    display: none;
+  }
+}

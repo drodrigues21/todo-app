@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./css/index.css">
 
   <title>Frontend Mentor | Todo app</title>
 
@@ -26,9 +26,9 @@
   <div class="container">
     <div class="todo-app">
       <h1>TODO</h1>
-      <div class="theme-btn">
+      <button class="theme-btn">
         <img src="./images/icon-moon.svg" alt="">
-      </div>
+      </button>
     </div>
     <div class="todos-container">
       <form class="todo-form">
@@ -47,11 +47,11 @@
           <span></span> items left
         </div>
         <ul class="desktop-filter">
-          <li>All</li>
-          <li>Active</li>
-          <li>Completed</li>
+          <li><a class="active" href="#">All</a></li>
+          <li><a href="#">Active</a></li>
+          <li><a href="#">Completed</a></li>
         </ul>
-        <div class="clear-completed">Clear Completed</div>
+        <div class="clear-completed"><a href="#">Clear Completed</a></div>
       </div>
       <ul class="todo todo-item mobile-filter">
         <li><a class="active" href="#">All</a></li>
@@ -61,7 +61,6 @@
     </div>
     <p class="drag-reorder">Drag and drop to reorder list</p>
   </div>
-
   <!-- changed
 
     Todo

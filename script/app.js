@@ -1,3 +1,6 @@
+// Get theme from local storage
+let darkMode = localStorage.getItem('darkMode');
+
 // Get elements from the DOM
 const todoForm = document.querySelector('.todo-form');
 const todoInput = document.querySelector('.todo-item input');
@@ -5,18 +8,7 @@ const todosContainer = document.querySelector('.todos');
 const todoCount = document.querySelector('.counter span');
 const clearCompleted = document.querySelector('.clear-completed');
 const themeBtn = document.querySelector('.theme-btn');
-
-// Change dark and light mode
-themeBtn.addEventListener('click', (e) => {
-    console.log(e.target);
-    let themeImg = e.target;
-
-    if ()
-
-    // themeImg.src = `./images/icon-sun.svg`;
-
-});
-
+const themeBgImg = document.querySelector('.bg-img');
 
 // Create todo item template and save the value of the todo input on local storage
 const createTodo = (todo) => {
@@ -116,6 +108,36 @@ const getLocalTodos = () => {
     });
 }
 
+// Darkmode toggle
+const enableDarkMode = () => {
+    // Add the class darkmode to the body
+    document.body.classList.add('darkmode');
+    // Change theme icon
+    themeBtn.firstElementChild.src = `./images/icon-sun.svg`;
+    // Change theme bg image
+    themeBgImg.children[0].srcset = `./images/bg-mobile-dark.jpg`;
+    themeBgImg.children[1].src = `./images/bg-desktop-dark.jpg`;
+
+    // Update darkmode in the local storage
+    localStorage.setItem('darkMode', 'enabled');
+}
+
+const disableDarkMode = () => {
+    // Remove the class darkmode from the body
+    document.body.classList.remove('darkmode');
+    // Change theme icon
+    themeBtn.firstElementChild.src = `./images/icon-moon.svg`;
+    // Change theme bg image
+    themeBgImg.children[0].srcset = `./images/bg-mobile-light.jpg`;
+    themeBgImg.children[1].src = `./images/bg-desktop-light.jpg`;
+    // Update darkmode in the local storage
+    localStorage.setItem('darkMode', null);
+}
+// Check if dark mode is enabled
+if (darkMode === 'enabled') {
+    enableDarkMode();
+}
+
 // Remove todo from local storage
 const deleteLocalTodo = (todo) => {
     let todos;
@@ -178,7 +200,6 @@ todoForm.addEventListener('submit', (e) => {
 });
 
 todosContainer.addEventListener('click', (e) => {
-    // console.log(e.target)
     checkDelete(e);
 });
 
@@ -186,4 +207,14 @@ todosContainer.addEventListener('click', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     getLocalTodos();
     count();
+});
+
+// Toggle dark mode
+themeBtn.addEventListener('click', () => {
+    darkMode = localStorage.getItem('darkMode');
+    if (darkMode !== 'enabled') {
+        enableDarkMode();
+    } else {
+        disableDarkMode();
+    }
 });
